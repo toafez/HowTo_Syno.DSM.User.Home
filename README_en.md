@@ -14,7 +14,7 @@ Linux is designed as a **multi-user system** and is therefore optimised for use 
 This home directory is usually located just below the root directory (/) and is called `/home`. Within the home directory there are directories named after the users created. For example, if a user's name is _tommes_, their home directory will be in the path `/home/tommes`. The short form `~/` is also often used in this context. The **tilde** (**~**) character used here is an abbreviation that always refers to the home directory `/home/[USERNAME]`. For example, if you wanted to change from anywhere in the file system to the `/home/[USERNAME]/Documents` directory, you could also use the command `cd ~/Documents`.
 
 - #### An example
-  After logging into the graphical user interface of any Linux operating system and running a terminal program, you will be redirected to your own home directory on the console (recognisable by the user name before the @ sign and the tilde character within the command prompt) `tommes@Ubuntu-Server:~$`. By typing the command `pwd` (which stands for print working directory) you can display the path you are currently in.
+  After logging into the graphical user interface of any Linux operating system and running a terminal program, you will be redirected to your own home directory on the console (recognisable by the user name before the @ sign and the tilde character within the command prompt) `tommes@Linux-Client:~$`. By typing the command `pwd` (which stands for print working directory) you can display the path you are currently in.
 
   ```
   tommes@Linux-Client:~$ pwd
@@ -47,11 +47,11 @@ The setup and use of the user home service is explained below, as well as the di
   It was therefore not possible to change to the home directory of the currently logged in SSH user, as this directory does not exist. Interestingly, the message does not refer to the `/home/[USERNAME]` folder mentioned at the beginning, but to the `/var/services/homes/[USERNAME]` path. More on this later.
 
 - Enabling the user home service
-  To be able to use the home directories, the **User Home Service** must be enabled. To do so, log in to the DSM of your Synology NAS with an account belonging to the Administrators group. Then navigate to **DSM Main Menu > Control Panel > Users and Groups _(1)_** and switch to the **Advanced _(2)_** tab. Under the **User Base** menu item, select the **Enable User Home Service _(3)_** checkbox. Directly below this, you can select the **Home Location _(4)_**, i.e. the volume on which the home directories of the users are to be stored. The default is `/volume1` and can be changed if more than one volume is available.
+  To be able to use the home directories, the **User Home Service** must be enabled. To do so, log in to the DSM of your Synology NAS with an account belonging to the Administrators group. Then navigate to **DSM Main Menu > Control Panel > Users & Groups _(1)_** and switch to the **Advanced _(2)_** tab. Under the **User Base** menu item, select the **Enable user home service _(3)_** checkbox. Directly below this, you can select the **Location of homes _(4)_**, i.e. the volume on which the home directories of the users are to be stored. The default is `/volume1` and can be changed if more than one volume is available.
 
   ![01_DSM_User_and_Group](/images/01_DSM_User_and_Group_en.png)
 
-  After enabling the user home service, a new **shared folder** named **homes** has been created on the previously specified volume and is now also displayed under **Control Panel > Shared Folders**.
+  After enabling the user home service, a new **shared folder** named **homes** has been created on the previously specified volume and is now also displayed under **Control Panel > Shared Folder**.
 
   ![02_DSM_Shared_Folder](/images/02_DSM_Shared_Folder_en.png)
 
@@ -59,11 +59,11 @@ The setup and use of the user home service is explained below, as well as the di
 
   ![03_DSM_FileStation_homes](/images/03_DSM_FileStation_homes_en.png)
 
-  In addition, another folder named **home** appears in File Station just above the **homes** folder. Interestingly, this supposedly _shared_ folder does not appear in **Control Panel > Shared Folders**. If you right-click on the **home** folder in File Station on the left-hand side of the folder overview, you will notice that the Properties item is not available in the context menu that appears.
+  In addition, another folder named **home** appears in File Station just above the **homes** folder. Interestingly, this supposedly _shared_ folder does not appear in **Control Panel > Shared Folder**. If you right-click on the **home** folder in File Station on the left-hand side of the folder overview, you will notice that the Properties item is not available in the context menu that appears.
 
   ![04_DSM_FileStation_home](/images/04_DSM_FileStation_home_en.png)
 
-  This may seem strange at first, so the difference between `/home' and `/homes' is explained below.
+  This may seem strange at first, so the difference between `/home` and `/homes` is explained below.
 
 ## The /homes folder
 The **homes** folder or directory `/volume[x]/homes` is the counterpart to the usual Linux home directory `/home`. In the directory `/volume[x]/homes`, as usual under Linux, there are directories named after the users created in DSM. If you now log in to the DSM console with a terminal program via SSH, you will notice that the message 'Could not chdir to home directory /var/services/homes/[USERNAME]: No such file or directory' no longer appears, as you are now in the home directory of the logged-in user.
